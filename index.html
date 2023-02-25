@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Retro Game</title>
+  </head>
+  <body>
+    <div class="bodyContainer">
+      <div class="welcomeContainer">
+        <h1 class="welcomeMessage">
+          Hello, welcome to the game.<br />
+          Please tell me your name below.
+        </h1>
+        <h1 class="playMessage"></h1>
+        <ol class="hide ruleList">
+          <li>Hiding can cost you dearly</li>
+          <li>Running won't always work</li>
+          <li>Fighting is not always the best option</li>
+          <li>There is no way out</li>
+        </ol>
+        <div class="playerContainer">
+          <h3 class="levelMessage"></h3>
+        </div>
+        <div class="buttonContainer hide">
+          <div class="gameButton leftButton">Go Left</div>
+          <div class="gameButton forwardButton">Go Forward</div>
+          <div class="gameButton rightButton">Go Right</div>
+        </div>
+        <div class="combatButtonContainer hide">
+          <div class="gameButton hideButton">Hide</div>
+          <div class="gameButton runButton">Run</div>
+          <div class="gameButton fightButton">Fight</div>
+        </div>
+        <div class="gameButton continueButton hide">Continue</div>
+        <div class="nameInputContainer">
+          <label class="nameInputLabel" for="nameInputField">Your name:</label>
+          <input type="text" class="nameInputField" id="nameInputField" />
+        </div>
+        <div class="startButton">
+          <p class="startButtonText">Start Game</p>
+        </div>
+        <div class="gameButton restartButton hide">Restart</div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

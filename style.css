@@ -1,0 +1,104 @@
+body {
+  background-color: black;
+}
+
+p {
+  color: white;
+}
+
+.bodyContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.monsterImage {
+  height: 250px;
+  width: 250px;
+  margin-bottom: 40px;
+}
+
+.welcomeContainer {
+  display: flex;
+  width: 800px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.welcomeMessage {
+  color: white;
+}
+
+.nameInputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.nameInputLabel {
+  color: white;
+}
+
+.nameInputField {
+  background-color: black;
+  color: white;
+  border: solid white 1px;
+  text-align: center;
+}
+
+.startButtonText {
+  color: white;
+  border: solid white 1px;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.startButtonText:hover {
+  color: black;
+  background-color: white;
+}
+
+.playMessage {
+  color: white;
+}
+
+.ruleList {
+  color: white;
+  text-align: left;
+}
+
+.levelMessage {
+  color: white;
+}
+
+.playerContainer {
+  height: 300px;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 3rem;
+}
+
+.combatButtonContainer {
+  display: flex;
+  gap: 3rem;
+}
+
+.gameButton {
+  display: flex;
+  color: white;
+  border: 1px solid white;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.gameButton:hover {
+  color: black;
+  background-color: white;
+}
+
+.hide {
+  display: none;
+}
