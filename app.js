@@ -120,16 +120,21 @@ const startGame = () => {
         (playMessage.textContent = ""),
         (levelMessage.textContent = `You awake in a dimly lit room, 
     the light seems to come from all around, and yet from nowhere all at once. You can't remember much beyond your name, you must find out where you are. What do you wish to do?`);
-    }, 8000);
+    }, 6000);
+  } else if (!nameInput.value) {
+    welcomeMessage.textContent = `You must enter a name!`;
   }
+  localStorage.setItem("playerName", player.name);
 };
+
+let rememberedName = localStorage.getItem("playerName");
+nameInput.value = rememberedName;
 
 let choice = "";
 
 leftBtn.addEventListener("click", () => {
   choice = "left";
   let chance = Math.floor(Math.random() * 100);
-  console.log(chance);
   nextScreen(player.health, choice, chance);
   screenCount = screenCount + 1;
   isPlayerAlive(player.health);
@@ -157,6 +162,7 @@ const nextScreen = (health, choice, chance) => {
     descriptions[Math.floor(Math.random() * descriptions.length)];
   if (health > 0) {
     console.log(`Your health is ${health}, and you chose to go ${choice}`);
+
     if (chance >= 66) {
       console.log("Chance is great than 66");
       levelMessage.textContent = `You advance into the next room. ${description.description}, again you're faced with three ways to go. Which will you choose?`;
@@ -177,11 +183,15 @@ const nextScreen = (health, choice, chance) => {
     } else if (chance >= 0) {
       console.log("Chance is 0");
       console.log(monster);
-      levelMessage.textContent = `You've made your choice to move on, you now come face to face with a ${monster.name}! What will you do?`;
-      player.isBeingChased = true;
-      player.monster = monster;
-      buttonContainer.classList.add("hide");
-      combatButtonContainer.classList.remove("hide");
+      if (monster.health <= 0) {
+        levelMessage.textContent = `You've made your choice to move on, in the next room you stumble upon the remains of the ${monster.name} you fought earlier, you should keep going.`;
+      } else if (monster.health >= 1) {
+        levelMessage.textContent = `You've made your choice to move on, you now come face to face with a ${monster.name}! What will you do?`;
+        player.isBeingChased = true;
+        player.monster = monster;
+        buttonContainer.classList.add("hide");
+        combatButtonContainer.classList.remove("hide");
+      }
     }
   } else {
     levelMessage.textContent = `You perish alone in the darkness.`;
@@ -272,7 +282,7 @@ const isPlayerAlive = (health) => {
 };
 
 restartBtn.addEventListener("click", () => {
-  restartGame();
+  location.reload();
 });
 
 const restartGame = () => {
@@ -281,6 +291,15 @@ const restartGame = () => {
   playMessage.textContent = "";
   continueBtn.classList.add("hide");
   restartBtn.classList.add("hide");
-
   startGame();
 };
+
+const resetGame = () => {
+  if (nameInput.value) {
+    startGame();
+  }
+};
+
+resetGame();
+
+localStorage.clear();
